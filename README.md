@@ -35,4 +35,6 @@ UpTimeX is a cloud-based **Uptime Monitoring Tool** that helps developers and bu
 ### **1️⃣ Clone the Repository**
 
 git clone https://github.com/your-username/UpTimeX.git
+
+---
 cd UpTimeX
