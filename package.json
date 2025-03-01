@@ -1,0 +1,25 @@
+{
+  "name": "uptimex",
+  "version": "1.0.0",
+  "description": "UpTimeX is a cloud-based **Uptime Monitoring Tool** that helps developers and businesses track website and server uptime in real-time. It provides **automated checks, alerts, and analytics** to ensure maximum availability of services.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dasunwee/UpTimeX.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dasunwee/UpTimeX/issues"
+  },
+  "homepage": "https://github.com/Dasunwee/UpTimeX#readme"
+
+
+}
