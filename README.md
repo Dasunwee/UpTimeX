@@ -28,5 +28,8 @@ UpTimeX is a cloud-based **Uptime Monitoring Tool** that helps developers and bu
 - Docker & Kubernetes (for containerization & orchestration)  
 - AWS/GCP (for cloud hosting)  
 
----
+
+
+
+
 
