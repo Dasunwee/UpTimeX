@@ -1,8 +1,8 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
 
-// Base API route
+// API Status Check
 router.get("/", (req, res) => {
     res.json({ message: "UpTimeX API is running 🚀" });
 });
@@ -29,4 +29,45 @@ router.get("/users", async (req, res) => {
     }
 });
 
-module.exports = router; // ✅ Export router at the end
+
+
+// Delete a user by ID
+router.delete("/user/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+        const deletedUser = await User.findByIdAndDelete(id);
+
+        if (!deletedUser) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        res.json({ message: "User deleted successfully", user: deletedUser });
+    } catch (error) {
+        res.status(500).json({ message: "Error deleting user", error });
+    }
+});
+
+    // Update user by ID
+router.put("/user/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { name, email } = req.body;
+
+        const updatedUser = await User.findByIdAndUpdate(
+            id,
+            { name, email },
+            { new: true, runValidators: true }
+        );
+
+        if (!updatedUser) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        res.json({ message: "User updated successfully", user: updatedUser });
+    } catch (error) {
+        res.status(500).json({ message: "Error updating user", error });
+    }
+});
+
+module.exports = router;
+
