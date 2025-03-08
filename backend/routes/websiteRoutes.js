@@ -3,7 +3,6 @@ const axios = require('axios');
 const Website = require('../models/Website');
 const router = express.Router();
 
-// ✅ GET all websites (Fixed)
 router.get('/', async (req, res) => {
     try {
         const websites = await Website.find();
@@ -12,6 +11,7 @@ router.get('/', async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 });
+
 
 // ✅ Check website uptime
 router.get('/:id/check', async (req, res) => {
@@ -30,17 +30,19 @@ router.get('/:id/check', async (req, res) => {
     }
 });
 
-// ✅ POST - Add a new website
 router.post('/', async (req, res) => {
     try {
         const { name, url } = req.body;
         const newWebsite = new Website({ name, url });
         await newWebsite.save();
-        res.json(newWebsite);
+
+        const updatedWebsites = await Website.find(); // Fetch updated list
+        res.json(updatedWebsites); // Send back updated list
     } catch (err) {
         res.status(500).json({ error: err.message });
     }
 });
+
 
 // ✅ PUT - Update website status
 router.put('/:id', async (req, res) => {
